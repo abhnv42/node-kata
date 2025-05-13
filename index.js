@@ -1,7 +1,23 @@
 export default function add(numbers) {
-	let numbersArray = getNumbers(numbers);
+	let negativeNumbers = [],
+		sum = 0,
+		numbersArray = getNumbers(numbers);
+
 	if(numbersArray.length === 0) return 0;
-	return numbersArray.reduce((acc, number) => acc + number, 0);
+
+	for(let i = 0; i < numbersArray.length; i++) {
+		const currentNumber = Number(numbersArray[i]);
+
+		if(currentNumber >= 0) {
+			sum += currentNumber;
+		} else {
+			negativeNumbers.push(currentNumber);
+		}
+
+	}
+
+	if(negativeNumbers.length > 0) throw new Error(`negative numbers not allowed ${negativeNumbers.join(",")}`);
+	return sum;
 }
 
 function getNumbers(numbers) {
