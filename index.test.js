@@ -32,3 +32,19 @@ test('custom delimeter with multiple characters', () => {
 	assert.strictEqual(add('//;;;\n5;;;7;;;8;;;9;;;10'), 39);
 })
 
+test('a negative number', () => {
+	assert.throws(() => { add("-1") }, (err) => {
+		assert(err instanceof Error);
+		assert.strictEqual(err.message, "negative numbers not allowed -1")
+		return true;
+	}, 'unexpected error at test: a negative number');
+})
+
+test('multiple negative numbers', () => {
+	assert.throws(() => { add("-1,88,-77\n-66\n-55") }, (err) => {
+		assert(err instanceof Error);
+		assert.strictEqual(err.message, "negative numbers not allowed -1,-77,-66,-55")
+		return true;
+	}, 'unexpected error at test: multiple negative numbers');
+})
+
