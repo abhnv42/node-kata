@@ -7,3 +7,7 @@ import add from "./index.js";
 test("empty string", () => {
 	assert.strictEqual(add(""), 0);
 })
+
+test("single number", () => {
+	assert.strictEqual(add("5"), 5);
+})
