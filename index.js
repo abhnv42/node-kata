@@ -10,8 +10,8 @@ function getNumbers(numbers) {
 }
 
 function parseNumbers(numbers) {
-	const CUSTOM_DELIMITER = numbers.match(new RegExp("(?<=^//)."));
-	const REMOVE_CUSTOM_DELIMITER_DECLARATION = new RegExp("^//.\n");
+	const CUSTOM_DELIMITER = numbers.match(new RegExp("(?<=^//).*(?=\n)"));
+	const REMOVE_CUSTOM_DELIMITER_DECLARATION = new RegExp("^//.*\n");
 	let delimiter;
 
 	if(CUSTOM_DELIMITER) {
