@@ -10,5 +10,5 @@ function getNumbers(numbers) {
 }
 
 function parseNumbers(numbers) {
-	return numbers.split(",").map(number => Number(number));
+	return numbers.split(new RegExp(",|\\n")).map(number => Number(number));
 }
