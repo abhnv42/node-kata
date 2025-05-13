@@ -10,9 +10,16 @@ function getNumbers(numbers) {
 }
 
 function parseNumbers(numbers) {
-	const CUSTOM_DELIMITER = numbers.match(new RegExp("(?<=^//).*(?=\n)"));
-	const REMOVE_CUSTOM_DELIMITER_DECLARATION = new RegExp("^//.*\n");
+	let [delimiter, finalNumbers] = getDelimiter(numbers);
+	return finalNumbers.split(delimiter).map(number => Number(number));
+}
+
+function getDelimiter(numbers) {
 	let delimiter;
+	const GET_CUSTOM_DELIMITER = new RegExp("(?<=^//).*(?=\n)");
+	const REMOVE_CUSTOM_DELIMITER_DECLARATION = new RegExp("^//.*\n");
+
+	const CUSTOM_DELIMITER = numbers.match(GET_CUSTOM_DELIMITER);
 
 	if(CUSTOM_DELIMITER) {
 		delimiter = new RegExp(`,|\\n|${CUSTOM_DELIMITER}`);
@@ -21,5 +28,5 @@ function parseNumbers(numbers) {
 		delimiter = new RegExp(",|\\n");
 	}
 
-	return numbers.split(delimiter).map(number => Number(number));
+	return [delimiter, numbers];
 }
