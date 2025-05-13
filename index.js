@@ -6,5 +6,5 @@ export default function add(numbers) {
 
 function getNumbers(numbers) {
 	if(numbers.length === 0) return [];
-	return [Number(numbers)];
+	return numbers.split(",").map(number => Number(number));
 }
