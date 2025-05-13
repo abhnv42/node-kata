@@ -11,11 +11,12 @@ function getNumbers(numbers) {
 
 function parseNumbers(numbers) {
 	const CUSTOM_DELIMITER = numbers.match(new RegExp("(?<=^//)."));
+	const REMOVE_CUSTOM_DELIMITER_DECLARATION = new RegExp("^//.\n");
 	let delimiter;
 
 	if(CUSTOM_DELIMITER) {
 		delimiter = new RegExp(`,|\\n|${CUSTOM_DELIMITER}`);
-		numbers = numbers.replace(/^\/\/.\n/, "");
+		numbers = numbers.replace(REMOVE_CUSTOM_DELIMITER_DECLARATION, "");
 	} else {
 		delimiter = new RegExp(",|\\n");
 	}
