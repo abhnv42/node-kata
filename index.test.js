@@ -23,3 +23,7 @@ test('multiple numbers', () => {
 test('new line between numbers', () => {
 	assert.strictEqual(add('5\n7,8,9\n10'), 39);
 })
+
+test('custom delimeter', () => {
+	assert.strictEqual(add('//;\n5;7;8;9;10'), 39);
+})
