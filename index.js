@@ -10,5 +10,6 @@ function getNumbers(numbers) {
 }
 
 function parseNumbers(numbers) {
-	return numbers.split(new RegExp(",|\\n")).map(number => Number(number));
+	const DELIMITER = new RegExp(",|\\n");
+	return numbers.split(DELIMITER).map(number => Number(number));
 }
