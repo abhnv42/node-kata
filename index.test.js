@@ -11,3 +11,7 @@ test("empty string", () => {
 test("single number", () => {
 	assert.strictEqual(add("5"), 5);
 })
+
+test('two numbers', () => {
+	assert.strictEqual(add('5,7'), 12);
+})
