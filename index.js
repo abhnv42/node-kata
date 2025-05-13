@@ -10,6 +10,15 @@ function getNumbers(numbers) {
 }
 
 function parseNumbers(numbers) {
-	const DELIMITER = new RegExp(",|\\n");
-	return numbers.split(DELIMITER).map(number => Number(number));
+	const CUSTOM_DELIMITER = numbers.match(new RegExp("(?<=^//)."));
+	let delimiter;
+
+	if(CUSTOM_DELIMITER) {
+		delimiter = new RegExp(`,|\\n|${CUSTOM_DELIMITER}`);
+		numbers = numbers.replace(/^\/\/.\n/, "");
+	} else {
+		delimiter = new RegExp(",|\\n");
+	}
+
+	return numbers.split(delimiter).map(number => Number(number));
 }
