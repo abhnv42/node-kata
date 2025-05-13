@@ -15,3 +15,7 @@ test("single number", () => {
 test('two numbers', () => {
 	assert.strictEqual(add('5,7'), 12);
 })
+
+test('multiple numbers', () => {
+	assert.strictEqual(add('5,7,8,9,10'), 39);
+})

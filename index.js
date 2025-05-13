@@ -6,5 +6,9 @@ export default function add(numbers) {
 
 function getNumbers(numbers) {
 	if(numbers.length === 0) return [];
+	return parseNumbers(numbers);
+}
+
+function parseNumbers(numbers) {
 	return numbers.split(",").map(number => Number(number));
 }
